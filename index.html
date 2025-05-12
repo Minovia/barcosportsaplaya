@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcos Port Saplaya - Alquiler de Embarcaciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="bg-gray-50">
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <span class="text-3xl font-bold text-blue-800 title-font" data-translate-key="preloaderTitle">Barcos Port Saplaya</span>
+            <div class="loading-spinner"></div>
+        </div>
+        <script src="./js/preloader.js"></script>
+    </div>
+    <!-- Fin Preloader -->
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 h-64px">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#inicio" class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-anchor text-blue-600 text-2xl mr-4"></i>
+                        <span class="text-md xs:text-2xl font-bold text-blue-800 title-font">Barcos <br class="block xs:hidden">Port Saplaya</span>
+                    </a>
+                </div>
+                <div class="hidden lg:ml-4 lg:flex lg:items-center lg:space-x-4">
+                    <a href="#embarcacion" class="nav-link text-blue-900 px-3 py-2 text-sm font-medium">Embarcación</a>
+                    <a href="#precios" class="nav-link text-blue-900 px-3 py-2 text-sm font-medium">Precios</a>
+                    <a href="#reserva" class="nav-link text-blue-900 px-3 py-2 text-sm font-medium">Reserva</a>
+                    <a href="#galeria" class="nav-link text-blue-900 px-3 py-2 text-sm font-medium">Galería</a>
+                    <a href="#contacto" class="nav-link text-blue-900 px-3 py-2 text-sm font-medium">Contacto</a>
+
+                    <!-- Desktop Language Switcher -->
+                    <div class="language-switcher language-switcher-desktop hidden lg:block">
+                        <button onclick="toggleLanguageDropdown()" class="flex items-center px-2 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-azul-claro">
+                            <span class="flex items-center">
+                                <i class="fas fa-globe mr-1"></i>
+                                ES
+                            </span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div id="languageDropdown" class="language-dropdown">
+                            <a href="#" onclick="changeLanguage('es')">Español</a>
+                            <a href="#" onclick="changeLanguage('en')">English</a>
+                            <a href="#" onclick="changeLanguage('fr')">Français</a>
+                            <a href="#" onclick="changeLanguage('de')">Deutsch</a>
+                            <a href="#" onclick="changeLanguage('it')">Italiano</a>
+                            <a href="#" onclick="changeLanguage('pt')">Português</a>
+                            <a href="#" onclick="changeLanguage('ru')">Русский</a>
+                            <a href="#" onclick="changeLanguage('ro')">Română</a>
+                        </div>
+                    </div>
+
+                    <a href="#reserva" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Reservar ahora
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center lg:hidden">
+
+                    <!-- Mobile Language Switcher -->
+                    <div class="language-switcher language-switcher-mobile flex items-center mr-2">
+                        <button onclick="toggleLanguageDropdownMobile()" class="flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-azul-claro">
+                            <span class="flex items-center">
+                                <i class="fas fa-globe mr-1"></i>
+                                ES
+                            </span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div id="languageDropdownMobile" class="language-dropdown">
+                            <a href="#" onclick="changeLanguage('es')">Español</a>
+                            <a href="#" onclick="changeLanguage('en')">English</a>
+                            <a href="#" onclick="changeLanguage('fr')">Français</a>
+                            <a href="#" onclick="changeLanguage('de')">Deutsch</a>
+                            <a href="#" onclick="changeLanguage('it')">Italiano</a>
+                            <a href="#" onclick="changeLanguage('pt')">Português</a>
+                            <a href="#" onclick="changeLanguage('ru')">Русский</a>
+                            <a href="#" onclick="changeLanguage('ro')">Română</a>
+                        </div>
+                    </div>
+
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-blue-800 hover:text-blue-600 hover:bg-blue-50" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-2xl" id="mobile-menu-icon"></i>
+                        <span class="hidden ml-1 text-base">Menú</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden lg:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#embarcacion" class="block px-3 py-2 text-base font-medium text-blue-900 hover:text-blue-600 hover:bg-blue-50 mobile-nav-link">Embarcación</a>
+                <a href="#precios" class="block px-3 py-2 text-base font-medium text-blue-900 hover:text-blue-600 hover:bg-blue-50 mobile-nav-link">Precios</a>
+                <a href="#reserva" class="block px-3 py-2 text-base font-medium text-blue-900 hover:text-blue-600 hover:bg-blue-50 mobile-nav-link">Reserva</a>
+                <a href="#galeria" class="block px-3 py-2 text-base font-medium text-blue-900 hover:text-blue-600 hover:bg-blue-50 mobile-nav-link">Galería</a>
+                <a href="#contacto" class="block px-3 py-2 text-base font-medium text-blue-900 hover:text-blue-600 hover:bg-blue-50 mobile-nav-link">Contacto</a>
+                <a href="#reserva" class="block w-full text-left px-3 py-2 text-base font-bold text-blue-600 hover:text-blue-500 hover:bg-blue-50 mobile-nav-link">
+                    Reservar ahora
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero relative h-screen flex items-center justify-center text-white mt-[-64px]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="title-font text-4xl md:text-6xl font-bold mb-6">Alquiler de Embarcaciones en Port Saplaya</h1>
+            <p class="text-xl md:text-2xl mb-8">Disfruta del Mediterráneo con nuestra exclusiva embarcación Marion 450 Open</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#reserva" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-lg font-semibold transition duration-300 transform hover:scale-105">
+                    Reservar ahora
+                </a>
+                <a href="#embarcacion" class="px-8 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 rounded-lg text-lg font-semibold transition duration-300 transform hover:scale-105">
+                    Conoce la embarcación
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-16 left-0 right-0 text-center">
+            <a href="#embarcacion" class="text-white animate-bounce inline-block">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Boat Section -->
+    <section id="embarcacion" class="py-16 bg-white scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-blue-900 mb-4">Marion 450 Open</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">La embarcación perfecta para disfrutar del mar con comodidad y seguridad</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="boat-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="./images/marion450-1.jpg" alt="Marion 450 Open" class="w-full h-auto object-cover">
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-blue-800 mb-6">Características técnicas</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Año</h4>
+                                <p class="text-gray-600">2024 (Nuevo)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Motor</h4>
+                                <p class="text-gray-600">15CV</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Capacidad</h4>
+                                <p class="text-gray-600">5 personas / 350kg</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Licencia</h4>
+                                <p class="text-gray-600">No requerida</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-blue-800 mb-4">Equipamiento</h3>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">Equipo de música (FM/Bluetooth)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">Emisora VHF</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">GPS</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">Caja de seguridad</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">Chalecos salvavidas</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">Bengalas</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">Extintor</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span class="text-gray-700">Escalera trasera</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-blue-800 mb-3">Servicio opcional</h4>
+                        <p class="text-gray-700 mb-3">Capitán disponible sin coste adicional para aquellos que prefieren relajarse y disfrutar del paseo.</p>
+                        <p class="text-gray-700"><span class="font-semibold">Combustible:</span> 25 litros incluidos en el alquiler.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precios" class="py-16 bg-gray-50 scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-blue-900 mb-4">Nuestras Tarifas</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Precios por embarcación (IVA incluido)</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="price-card bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 text-center flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">1 hora</h3>
+                    <p class="text-3xl font-bold text-blue-600 mb-4">120€</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li>Máximo 5 personas</li>
+                        <li>25L combustible</li>
+                    </ul>
+                    <a href="#reserva" class="w-full inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300 mt-auto">Reservar</a>
+                </div>
+                
+                <div class="price-card bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">2 horas</h3>
+                    <p class="text-3xl font-bold text-blue-600 mb-4">150€</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li>Máximo 5 personas</li>
+                        <li>25L combustible</li>
+                        <li><span class="text-green-600 font-semibold">Ahorra 90€</span></li>
+                    </ul>
+                    <a href="#reserva" class="w-full inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300">Reservar</a>
+                </div>
+                
+                <div class="price-card bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">3 horas</h3>
+                    <p class="text-3xl font-bold text-blue-600 mb-4">190€</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li>Máximo 5 personas</li>
+                        <li>25L combustible</li>
+                        <li><span class="text-green-600 font-semibold">Ahorra 170€</span></li>
+                    </ul>
+                    <a href="#reserva" class="w-full inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300">Reservar</a>
+                </div>
+                
+                <div class="price-card bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">4 horas</h3>
+                    <p class="text-3xl font-bold text-blue-600 mb-4">230€</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li>Máximo 5 personas</li>
+                        <li>25L combustible</li>
+                        <li><span class="text-green-600 font-semibold">Ahorra 250€</span></li>
+                    </ul>
+                    <a href="#reserva" class="w-full inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300">Reservar</a>
+                </div>
+                
+                <div class="price-card bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">8 horas</h3>
+                    <p class="text-3xl font-bold text-blue-600 mb-4">320€</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li>Máximo 5 personas</li>
+                        <li>25L combustible</li>
+                        <li><span class="text-green-600 font-semibold">Ahorra 640€</span></li>
+                    </ul>
+                    <a href="#reserva" class="w-full inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300">Reservar</a>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white p-8 rounded-xl shadow-md">
+                <h3 class="text-2xl font-bold text-blue-800 mb-6">Condiciones de alquiler</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3">Requisitos</h4>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                <span>DNI en vigor</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                <span>Edad mínima 18 años</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3">Fianza</h4>
+                        <p class="text-gray-600">200€ (reembolsable al devolver la embarcación en buen estado)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="reserva" class="py-16 bg-white scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-blue-900 mb-4">Reserva tu embarcación</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Sigue estos sencillos pasos para disfrutar de tu día en el mar</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-blue-50 p-8 rounded-xl shadow-sm mb-8">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Proceso de reserva</h3>
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-4">1</div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Contacta con nosotros</h4>
+                                    <p class="text-gray-600">Por teléfono, WhatsApp o a través del formulario de contacto.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-4">2</div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Comprueba disponibilidad</h4>
+                                    <p class="text-gray-600">Te confirmaremos las fechas disponibles para tu reserva.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-4">3</div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Realiza el pago</h4>
+                                    <p class="text-gray-600">50% del importe para confirmar la reserva (el resto se abona el día del alquiler junto con la fianza).</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-4">4</div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Recibe confirmación</h4>
+                                    <p class="text-gray-600">Te enviaremos todos los detalles de tu reserva por email.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Disponibilidad</h3>
+                        <div id="calendar" class="mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <button id="prevMonth" class="px-3 py-1 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700"><</button>
+                                <h3 id="currentMonthYear" class="text-xl font-semibold text-gray-800"></h3>
+                                <button id="nextMonth" class="px-3 py-1 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700">></button>
+                            </div>
+                            <div class="grid grid-cols-7 gap-1 text-center font-semibold text-gray-700 mb-2">
+                                <div>Lun</div>
+                                <div>Mar</div>
+                                <div>Mié</div>
+                                <div>Jue</div>
+                                <div>Vie</div>
+                                <div>Sáb</div>
+                                <div>Dom</div>
+                            </div>
+                            <div id="calendar-days" class="grid grid-cols-7 gap-x-1 gap-y-2">
+                                <!-- Days will be injected here by JavaScript -->
+                            </div>
+                            <div class="flex justify-center mt-4 space-x-4">
+                                <div class="flex items-center">
+                                    <div class="h-4 w-4 rounded-full bg-blue-100 mr-2"></div>
+                                    <span class="text-sm text-gray-600">Disponible</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="h-4 w-4 rounded-full bg-blue-600 mr-2"></div>
+                                    <span class="text-sm text-gray-600">Reservado</span>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="./js/calendar.js"></script>
+                        <p class="text-gray-600 mb-4">Para consultar disponibilidad exacta o reservar fuera de temporada, contáctenos directamente.</p>
+                        <a href="#contacto" class="inline-block px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300">Consultar disponibilidad</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Política de cancelación</h3>
+                        <div class="space-y-4 text-gray-600">
+                            <p>Entendemos que los planes pueden cambiar. Nuestra política de cancelación está diseñada para ser justa tanto para nosotros como para nuestros clientes.</p>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">Cancelación con más de 15 días de antelación:</h4>
+                                <p>Reembolso del 100% del depósito.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">Cancelación entre 7 y 15 días de antelación:</h4>
+                                <p>Reembolso del 50% del depósito.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">Cancelación con menos de 7 días de antelación:</h4>
+                                <p>No se realiza reembolso del depósito.</p>
+                            </div>
+                            <p>En caso de condiciones meteorológicas adversas que impidan la navegación, ofrecemos reprogramar la salida o reembolsar el importe íntegro.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Sugerencias de rutas</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-compass"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Costa de Port Saplaya</h4>
+                                    <p class="text-gray-600">Disfruta de las vistas de la costa y los acantilados cercanos. Ideal para 1-2 horas de navegación.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-umbrella-beach"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Calas cercanas</h4>
+                                    <p class="text-gray-600">Descubre calas escondidas solo accesibles por mar. Perfecto para un baño en aguas cristalinas.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Atardecer en el mar</h4>
+                                    <p class="text-gray-600">Una experiencia mágica navegando mientras el sol se pone en el horizonte. Recomendado para las últimas horas de la tarde.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-fish"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Pesca deportiva</h4>
+                                    <p class="text-gray-600">Zonas ideales para practicar la pesca. Podemos proporcionarte el equipo básico si lo necesitas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="py-16 bg-gray-50 scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 rounded-xl shadow-md">
+                <h2 class="title-font text-3xl font-bold text-blue-900 mb-6">Normas de uso de la embarcación</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-4">Antes de zarpar</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Revisar el equipo de seguridad y asegurarse de que todos los pasajeros llevan chaleco salvavidas.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Recibir instrucciones básicas de manejo y normas de navegación en la zona.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Comprobar el nivel de combustible y estado general de la embarcación.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-4">Durante la navegación</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Respetar siempre los límites de velocidad y zonas de navegación permitidas.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>No acercarse a menos de 200 metros de la costa, excepto en zonas autorizadas.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Prohibido el consumo de alcohol por parte del patrón de la embarcación.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Mantener la emisora VHF en el canal 16 en caso de emergencia.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-4">Prohibiciones</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Navegar de noche sin autorización expresa.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Fondear en zonas de praderas de posidonia.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Arrojar cualquier tipo de residuo al mar.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Superar el número máximo de personas a bordo.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-4">Al regresar</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Devolver la embarcación en el horario acordado.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Repostar combustible si se ha consumido más del incluido.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Limpiar la embarcación de basura y objetos personales.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                <span>Informar de cualquier incidencia o avería.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Responsabilidades</h3>
+                    <p class="text-gray-700">El arrendatario será responsable de cualquier daño causado a la embarcación durante el periodo de alquiler, así como de las infracciones cometidas durante la navegación. Se recomienda encarecidamente contratar un seguro de daños para mayor tranquilidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="ubicacion" class="py-16 bg-white scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-blue-900 mb-4">Ubicación</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Encuéntranos en el corazón de Port Saplaya</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="map-container h-128 rounded-xl shadow-lg overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3247.494663674266!2d-0.3218056969642272!3d39.51063094326308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604752685e3ffb%3A0x202037c224efb03c!2sBarcos%20Port%20Saplaya!5e1!3m2!1ses!2snl!4v1747008216071!5m2!1ses!2snl" width="" height="" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-blue-50 p-8 rounded-xl shadow-sm mb-8">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Cómo llegar</h3>
+                        <div class="space-y-4 text-gray-600">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">En coche</h4>
+                                    <p>Desde Valencia centro, tomar la CV-300 dirección Port Saplaya. Aparcamiento disponible en la zona.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-bus"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">En autobús</h4>
+                                    <p>Línea 112 desde Valencia (Plaza del Ayuntamiento) hasta Port Saplaya. Parada a 5 minutos a pie.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-taxi"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">En taxi</h4>
+                                    <p>Desde Valencia centro aproximadamente 20 minutos. Coste aproximado 20-25€.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4">Dónde estamos</h3>
+                        <div class="flex items-start mb-4">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-700">Calle Muelle nr, 5, amarre 300</p>
+                                <p class="text-gray-700">46120 Port Saplaya, Valencia</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-1">Horario</h4>
+                                <p class="text-gray-600">Lunes a Domingo: 8:00 - 20:00</p>
+                                <p class="text-gray-600">Temporada alta (Junio-Septiembre): 7:00 - 21:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="py-16 bg-gray-50 scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-blue-900 mb-4">Galería</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Descubre nuestra embarcación y las increíbles experiencias que te esperan</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-xl overflow-hidden shadow-lg">
+                    <img src="./images/galeria-1.png" alt="Embarcación Marion 450 Open" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden shadow-lg">
+                    <img src="./images/galeria-2.png" alt="Embarcación en el mar" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden shadow-lg">
+                    <img src="./images/galeria-7.png" alt="Atardecer en el mar" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden shadow-lg">
+                    <img src="./images/galeria-4.png" alt="Cala cercana" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden shadow-lg">
+                    <img src="./images/galeria-5.png" alt="Interior de la embarcación" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden shadow-lg">
+                    <img src="./images/galeria-6.png" alt="Familia disfrutando del paseo" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300">
+                    Ver más fotos y vídeos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-blue-900 mb-4">Preguntas frecuentes</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Resolvemos tus dudas más comunes</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4">
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg p-2 shadow-sm">
+                        <button class="flex justify-between items-center w-full text-left focus:outline-none p-4 cursor-pointer" onclick="toggleFAQ(1)">
+                            <h3 class="text-lg font-semibold text-blue-800">¿Necesito licencia para alquilar la embarcación?</h3>
+                            <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-1"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden p-4" id="faq-content-1">
+                            <p>No, no se requiere licencia para alquilar nuestra embarcación Marion 450 Open. Sin embargo, el patrón debe ser mayor de 18 años y presentar DNI en vigor. Antes de zarpar, nuestro personal te dará una breve formación sobre el manejo básico de la embarcación y las normas de navegación en la zona.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg p-2 shadow-sm">
+                        <button class="flex justify-between items-center w-full text-left focus:outline-none p-4 cursor-pointer" onclick="toggleFAQ(2)">
+                            <h3 class="text-lg font-semibold text-blue-800">¿Qué incluye el precio del alquiler?</h3>
+                            <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-2"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden p-4" id="faq-content-2">
+                            <p>El precio incluye:</p>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li>Uso de la embarcación durante el tiempo contratado</li>
+                                <li>25 litros de combustible</li>
+                                <li>Todo el equipamiento de seguridad requerido (chalecos salvavidas, bengalas, extintor)</li>
+                                <li>Equipo de música con Bluetooth</li>
+                                <li>GPS y emisora VHF</li>
+                                <li>Seguro básico de responsabilidad civil</li>
+                                <li>Asistencia técnica en caso de necesidad</li>
+                            </ul>
+                            <p class="mt-2">No incluye combustible adicional consumido más allá de los 25 litros proporcionados.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg p-2 shadow-sm">
+                        <button class="flex justify-between items-center w-full text-left focus:outline-none p-4 cursor-pointer" onclick="toggleFAQ(3)">
+                            <h3 class="text-lg font-semibold text-blue-800">¿Qué ocurre si el tiempo es malo el día de mi reserva?</h3>
+                            <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-3"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden p-4" id="faq-content-3">
+                            <p>La seguridad es nuestra prioridad. Si las condiciones meteorológicas no son adecuadas para navegar (viento fuerte, oleaje, tormentas), te ofreceremos reprogramar tu salida para otra fecha disponible o el reembolso íntegro de tu reserva. Esta decisión la tomamos el mismo día basándonos en los partes meteorológicos oficiales.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg p-2 shadow-sm">
+                        <button class="flex justify-between items-center w-full text-left focus:outline-none p-4 cursor-pointer" onclick="toggleFAQ(4)">
+                            <h3 class="text-lg font-semibold text-blue-800">¿Puedo llevar comida y bebida a bordo?</h3>
+                            <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-4"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden p-4" id="faq-content-4">
+                            <p>Sí, puedes llevar comida y bebida a bordo. Sin embargo, hay algunas restricciones:</p>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li>Prohibido llevar vidrio (botellas, vasos, etc.) por seguridad</li>
+                                <li>No se permite cocinar a bordo</li>
+                                <li>El patrón no puede consumir alcohol</li>
+                                <li>Debes llevarte toda la basura generada</li>
+                            </ul>
+                            <p class="mt-2">Te recomendamos llevar comidas ligeras, frutas, snacks y bebidas en envases de plástico o latas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg p-2 shadow-sm">
+                        <button class="flex justify-between items-center w-full text-left focus:outline-none p-4 cursor-pointer" onclick="toggleFAQ(5)">
+                            <h3 class="text-lg font-semibold text-blue-800">¿Hay zonas de baño accesibles con la embarcación?</h3>
+                            <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-5"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden p-4" id="faq-content-5">
+                            <p>Sí, hay numerosas calas y zonas de baño accesibles solo por mar en los alrededores de Port Saplaya. Nuestro personal te indicará las mejores zonas según las condiciones del día y tu experiencia. Algunas de las más populares son:</p>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li>Cala Estreta - Aguas cristalinas y poco frecuentada</li>
+                                <li>Playa de la Garrofera - Arena fina y aguas tranquilas</li>
+                                <li>Cala del Moro - Pequeña ensenada rodeada de acantilados</li>
+                            </ul>
+                            <p class="mt-2">Recuerda fondear siempre en zonas permitidas y evitar las praderas de posidonia.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg p-2 shadow-sm">
+                        <button class="flex justify-between items-center w-full text-left focus:outline-none p-4 cursor-pointer" onclick="toggleFAQ(6)">
+                            <h3 class="text-lg font-semibold text-blue-800">¿Qué documentación necesito para alquilar?</h3>
+                            <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-6"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden p-4" id="faq-content-6">
+                            <p>Para formalizar el alquiler necesitarás:</p>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li>DNI o pasaporte en vigor del patrón y todos los tripulantes</li>
+                                <li>Tarjeta de crédito para la fianza (200€ que se bloquean y se liberan al devolver la embarcación)</li>
+                                <li>Firma del contrato de alquiler y aceptación de las condiciones</li>
+                            </ul>
+                            <p class="mt-2">Si optas por el servicio de capitán, solo necesitas tu DNI o pasaporte.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-4">¿No encuentras respuesta a tu pregunta?</p>
+                    <a href="#contacto" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition duration-300">
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 bg-gray-50 scroll-mt-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-blue-900 mb-4">Contacto</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Estamos aquí para ayudarte. Contáctanos para reservas o consultas.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Formulario de contacto</h3>
+                        <form class="space-y-6" action="#" method="POST">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nombre completo</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
+                                <input type="tel" id="phone" name="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700">Asunto</label>
+                                <select id="subject" name="subject" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <option>Consulta general</option>
+                                    <option>Reserva</option>
+                                    <option>Disponibilidad</option>
+                                    <option>Otro</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    Enviar mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Información de contacto</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Dirección</h4>
+                                    <p class="text-gray-600">Calle Muelle nr, 5, amarre 300</p>
+                                    <p class="text-gray-600">46120 Port Saplaya, Valencia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Teléfono</h4>
+                                    <p class="text-gray-600"><a href="tel:+34123456789" class="hover:text-blue-700">+34 123 456 789</a></p>
+                                    <p class="text-gray-600">Disponible de 8:00 a 20:00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Email</h4>
+                                    <p class="text-gray-600"><a href="mailto:info@barcosportsaplaya.com" class="hover:text-blue-700">info@barcosportsaplaya.com</a></p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">WhatsApp</h4>
+                                    <p class="text-gray-600"><a href="https://wa.me/34123456789" target="_blank" class="hover:text-blue-700">+34 123 456 789</a></p>
+                                    <p class="text-gray-600">Atención rápida por chat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-8 rounded-xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6">Horario de atención</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-800">Lunes a Viernes</span>
+                                <span class="text-gray-600">8:00 - 20:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-800">Sábados</span>
+                                <span class="text-gray-600">8:00 - 21:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-800">Domingos</span>
+                                <span class="text-gray-600">8:00 - 20:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-800">Temporada alta (Jun-Sep)</span>
+                                <span class="text-gray-600">7:00 - 22:00</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-white p-4 rounded-lg">
+                            <p class="text-gray-700">Para reservas fuera de horario, contacta con nosotros por WhatsApp o email.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="title-font text-xl font-bold mb-4">Barcos Port Saplaya</h3>
+                    <p class="text-blue-200 mb-4">Alquiler de embarcaciones en uno de los puertos más bonitos de Valencia.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-200 hover:text-white text-xl">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white text-xl">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="title-font text-xl font-bold mb-4">Enlaces rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-blue-200 hover:text-white">Inicio</a></li>
+                        <li><a href="#embarcacion" class="text-blue-200 hover:text-white">Embarcación</a></li>
+                        <li><a href="#precios" class="text-blue-200 hover:text-white">Precios</a></li>
+                        <li><a href="#reserva" class="text-blue-200 hover:text-white">Reserva</a></li>
+                        <li><a href="#galeria" class="text-blue-200 hover:text-white">Galería</a></li>
+                        <li><a href="#contacto" class="text-blue-200 hover:text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="title-font text-xl font-bold mb-4">Información Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-200 hover:text-white">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Términos y Condiciones</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="title-font text-xl font-bold mb-4">Contacto</h3>
+                    <ul class="space-y-2 text-blue-200">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>Calle Muelle nr, 5, amarre 300<br>46120 Port Saplaya, Valencia</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <a href="tel:+34123456789" class="hover:text-white">+34 123 456 789</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <a href="mailto:info@barcosportsaplaya.com" class="hover:text-white">info@barcosportsaplaya.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-700 pt-6 text-center text-blue-300 text-sm">
+                <p>© <span id="currentYear"></span> Barcos Port Saplaya. Todos los derechos reservados.</p>
+                <p>Diseñado con <i class="fas fa-heart text-red-400"></i> por Daniel Marcovici</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/+34123456789" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full flex items-center shadow-xl transition transform hover:scale-110">
+            <i class="fab fa-whatsapp text-2xl lg:mr-2"></i>
+            <span class="hidden lg:block text-lg font-medium" data-translate-key="whatsappButton">Contactar por WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+
+    <script src="./js/script.js"></script>
+    
+</body>
+</html>
